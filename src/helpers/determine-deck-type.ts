@@ -7,6 +7,6 @@
 
 export const determineDeckType = (isMajorArcanaOnly: boolean) =>{
     return Array.from({ length: isMajorArcanaOnly ? 22 : 78}).map(
-        (_, index) => index
+        (_value:unknown, index:number) => index // value est vide donc spécification avec un "_" au début de la variable car elle n'est pas utilisée
     );
 };
