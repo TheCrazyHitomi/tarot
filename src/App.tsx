@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import './App.css';
 import ArcanasDrawing from './components/ArcanasDrawing';
 import MajorArcanaDrawing from './components/MajorArcanasDrawing';
