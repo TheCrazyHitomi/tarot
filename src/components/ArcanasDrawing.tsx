@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import Cards from "./cards";
+import Cards from "./Cards";
 import LittleCardDisplay from "./LittleCardDisplay";
 
 
@@ -58,11 +58,11 @@ const ArcanasDrawing = () =>{
             {cardDraw?.length ? (
                 <>
                 <p>Cartes tirées</p>
-                <ul>
-                    {cardDraw.map((card) => {
-                        return <Cards id={card} />;
-                    })}
-                </ul>
+                    <ul className="cards">
+                        {cardDraw.map((card) => {
+                            return <Cards id={card} />;
+                        })}
+                    </ul>
                 </>
             ) : (
                 ""

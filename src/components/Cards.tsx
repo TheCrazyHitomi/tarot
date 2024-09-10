@@ -19,15 +19,15 @@ const Cards =(props: { id: number}) => {
 
     return (
         <li>
-            <div>
-                <h3>{cardData?.name}</h3>
-
-                <img 
-                    src={`${API_ENDPOINT}${cardData?.image}`} 
-                    alt={`${cardData?.name}`} 
-                />
-
-                <span>{cardData?.description}</span>
+            <div className="alloverCard">
+                    <div className="card">
+                        <h3 className="cardName">{cardData?.name}</h3>
+                        <img className="cardPic"
+                            src={`${API_ENDPOINT}${cardData?.image}`} 
+                            alt={`${cardData?.name}`} 
+                            />
+                            {/* <span>{cardData?.description}</span> */}
+                    </div>
             </div>
             {}
 

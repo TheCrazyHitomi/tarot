@@ -16,19 +16,21 @@ function App() {
 
   return (
     <>
-      <h1>Arcana</h1>
+      <h1>ARcAnA</h1>
 
-      {isDrawing ? (
-        <>
-          {isMajorArcanas ? <MajorArcanaDrawing/> : <ArcanasDrawing/>}
-          <button onClick={() => setIsDrawing(false)}>Revenir à la sélection des tirages</button>
-        </>
-      ) :(
-        <>
-        <button onClick={() => handleSelection(true)}>Tirage en croix</button>
-        <button onClick={() => handleSelection(false)}>Tirage à 3 cartes</button>
-        </>
+      <div className='container'>
+        {isDrawing ? (
+          <>
+            {isMajorArcanas ? <MajorArcanaDrawing/> : <ArcanasDrawing/>}
+            <button onClick={() => setIsDrawing(false)}>Revenir à la sélection des tirages</button>
+          </>
+        ) :(
+          <>
+          <button onClick={() => handleSelection(true)}>Tirage en croix</button>
+          <button onClick={() => handleSelection(false)}>Tirage à 3 cartes</button>
+          </>
       )}
+      </div>
     </>
   );
 }

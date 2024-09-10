@@ -3,5 +3,4 @@
 export const getApi = (apiEndpoint: string): Promise<any> => {
     return fetch(apiEndpoint)
         .then((response) => response.json())
-        .then((data) => data);
 };

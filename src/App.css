@@ -1,13 +1,153 @@
+
+
+.major-mono-display-regular {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
 #root {
   max-width: 1280px;
+  max-height: inherit;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+body{
+  background: repeat url("src/assets/images/Nebula1.jpg");
+  background-size: cover;
+
+  
+}
+
+h1,h2,h3, p, button{
+  color: lightblue;
+}
+
+h1{
+  font-family:"Major Mono Display", Courier, monospace;
+  font-size: 3vw;
+}
+
+/* ul{
+  display: flex;
+  flex-direction: row;
+  list-style:none;
+} */
+
+button{
+  margin: 0.5vw;
+  padding: 0.4vw 1vw 0.4vw 1vw;
+  background: rgba(55, 67, 112, 0.2);
+  border-radius: 0.5vw;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-style: outset;
+  border-color: rgba(87, 98, 141, 0.5);
+}
+
+button:hover{
+  margin: 0.5vw;
+  padding: 0.4vw 1vw 0.4vw 1vw;
+  background: rgba(110, 128, 193, 0.2);
+  border-radius: 0.5vw;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-style: inset;
+}
+
+.container{
+  background: rgba(55, 67, 112, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 2vw;
+}
+
+.cards {
+  padding: 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+
+.alloverCard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 4vw 0 4vw 0;
+  background: rgba(55, 67, 112, 0.3);
+}
+
+.card{
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 15vw;
+  height: 25vw;
+  border-radius: 1.5vw;
+  z-index: 3000; 
+  box-shadow: 0.25vw 0.25vw 0.7vw #191921,
+              -0.25vw -0.25vw 0.7vw rgb(87, 98, 141);
+
+}
+
+.card:hover .cardPic{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 11vw;
+  height: 11vw;
+  border-radius: 50%;
+  transition: ease-in 0.5s ;
+  transform: translateY(-3vw);
+  box-shadow: 0.25vw 0.25vw 0.7vw rgb(87, 98, 141),
+  -0.25vw -0.25vw 0.7vw #191921;
+  object-fit:cover;
+
+}
+
+.card:hover{
+  box-shadow: 0.25vw 0.25vw 0.7vw rgb(87, 98, 141),
+  -0.25vw -0.25vw 0.7vw #191921;
+  transition: ease-in 0.5s ;
+}
 
 
-.card {
-  padding: 2em;
+.cardPic{
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 15vw;
+  height: 25vw;
+  border-radius: 1.5vw;
+}
+
+
+.cardName{
+  position: absolute;
+  bottom: 3vw;
+  z-index: 200;
+  color:transparent;
+}
+
+.card:hover .cardName{
+  color:lightblue;
+  transition: ease-in-out 1s ;
 }
 
