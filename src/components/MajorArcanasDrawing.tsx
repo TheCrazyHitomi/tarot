@@ -3,7 +3,7 @@ import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { drawMajorArcana } from "../helpers/draw-major-arcana";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import Cards from "./cards";
+import Cards from "./Cards";
 import LittleCardDisplay from "./LittleCardDisplay";
 
 const MajorArcanaDrawing = () => {
@@ -50,13 +50,7 @@ const MajorArcanaDrawing = () => {
         <>
             <h2>Tirage en croix</h2>
 
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                }}
-                >
+            <div className="littleCards-maj">
                 {cards.map((card) => (
                     <LittleCardDisplay id={card}/>
                 ))}
@@ -70,10 +64,57 @@ const MajorArcanaDrawing = () => {
 
             <button onClick={handleShuffle} disabled={!canShuffle}>mélanger</button>
 
-            {cardDraw?.length ?(
+            {cardDraw?.length || lastMajorArcana ? (
+                <>
+                <div className="cross">
+                    <p>Cartes tirées</p>
+
+
+                        <div className="tarot-layout">
+                            {/* Disposition des cartes en croix */}
+                            {cardDraw[0] && (
+                                <div className="cards card1">
+                                    <Cards id={cardDraw[0]} />
+                                </div>
+                            )}
+                            {cardDraw[1] && (
+                                <div className="cards card2">
+                                    <Cards id={cardDraw[1]} />
+                                </div>
+                            )}
+                            {cardDraw[2] && (
+                                <div className="cards card3">
+                                    <Cards id={cardDraw[2]} />
+                                </div>
+                            )}
+                            {cardDraw[3] && (
+                                <div className="cards card4">
+                                    <Cards id={cardDraw[3]} />
+                                </div>
+                            )}
+                            {lastMajorArcana && (
+                                <div className="cards card5">
+                                    <Cards id={lastMajorArcana} />
+                                </div>
+                            )}
+                        </div>
+                </div>
+                </>
+            ) : (
+                ""
+            )}
+        </>
+    );
+};
+
+
+
+        
+            {/* {cardDraw?.length ?(
                 <>
                     <p>Cartes tirées</p>
-                    <ul>
+
+                    <ul className="cards-maj">
                         {cardDraw.map((card) => {
                             return <Cards id={card} />;
                         })}
@@ -85,13 +126,16 @@ const MajorArcanaDrawing = () => {
             {lastMajorArcana ? (
                 <>
                     <p>Synthèse</p>
-                    <Cards id={lastMajorArcana}/>
+                    <div className="cards">
+                    <Cards id={lastMajorArcana} />
+                    </div>
                 </>
             ):(
+                
                 ""
             )}
         </>
     );
-};
+}; */}
 
 export default MajorArcanaDrawing;

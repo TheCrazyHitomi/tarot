@@ -12,7 +12,7 @@ const LittleCardDisplay = (props: { id : number }) => {
         );
     },[id]);
 
-    return  <img style={{ width: "25px"}} src={image} />
+    return  <img className="littleCard-item" src={image} />
 };
 
 export default LittleCardDisplay;

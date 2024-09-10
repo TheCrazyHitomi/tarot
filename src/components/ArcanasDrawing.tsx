@@ -44,11 +44,11 @@ const ArcanasDrawing = () =>{
         <>
             <h2>Tirage à 3 cartes</h2>
 
-            <div style={{ display: "flex", flexDirection: "row", flexWrap:"wrap"}}>
+            <div className="littleCards">
                 {cards.map((card) => (
                     <LittleCardDisplay id={card} />
                 ))}
-        </div>
+            </div>
 
             {canDraw ? 
                 <button onClick={handleDraw}>tirer</button> : ""}
@@ -58,11 +58,13 @@ const ArcanasDrawing = () =>{
             {cardDraw?.length ? (
                 <>
                 <p>Cartes tirées</p>
+                <div className="row">
                     <ul className="cards">
                         {cardDraw.map((card) => {
                             return <Cards id={card} />;
                         })}
                     </ul>
+                </div>
                 </>
             ) : (
                 ""

@@ -31,6 +31,9 @@ function App() {
           </>
       )}
       </div>
+      <footer>
+        Made with love by <a href="https://github.com/TheCrazyHitomi">theCrazyHitomi</a><sup>®</sup> | 2024
+      </footer>
     </>
   );
 }

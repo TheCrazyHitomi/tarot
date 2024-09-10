@@ -5,6 +5,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+
 #root {
   max-width: 1280px;
   max-height: inherit;
@@ -16,12 +18,11 @@
 body{
   background: repeat url("src/assets/images/Nebula1.jpg");
   background-size: cover;
-
-  
 }
 
 h1,h2,h3, p, button{
   color: lightblue;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 h1{
@@ -29,11 +30,15 @@ h1{
   font-size: 3vw;
 }
 
-/* ul{
-  display: flex;
-  flex-direction: row;
-  list-style:none;
-} */
+a{
+  color: aliceblue;
+  text-decoration: none;
+}
+
+a:hover{
+  color: rgb(3, 3, 61);
+  border-bottom: 1px solid;
+}
 
 button{
   margin: 0.5vw;
@@ -67,6 +72,76 @@ button:hover{
   padding: 2vw;
 }
 
+.littleCards-maj{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(11, 2vw);
+  grid-template-rows: repeat(2, 3vw);
+  justify-content: center;
+}
+.littleCards{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(13, 2vw);
+  grid-template-rows: repeat(5, 3vw);
+  justify-content: center;
+}
+
+.littleCard-item{
+  width: 1.5vw;
+  height: 2.5vw;
+}
+
+.row{
+  margin: 2vw;
+}
+
+.cross{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vw;
+
+}
+.tarot-layout {
+  margin: 2vw;
+  display: grid;
+  grid-template-columns: repeat(3, 15vw); /* 3 colonnes */
+  grid-template-rows: repeat(3, 25vw);    /* 3 lignes */
+  gap: 1vw; /* Espacement entre les cartes */
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+}
+
+.card1 {
+  grid-column: 1;
+  grid-row: 2; /* Première carte à gauche */
+}
+
+.card2 {
+  grid-column: 3;
+  grid-row: 2; /* Deuxième carte à droite */
+}
+
+.card3 {
+  grid-column: 2;
+  grid-row: 1; /* Troisième carte en haut */
+}
+
+.card4 {
+  grid-column: 2;
+  grid-row: 3; /* Quatrième carte en bas */
+}
+
+.card5 {
+  grid-column: 2;
+  grid-row: 2; /* Cinquième carte au centre (Synthèse) */
+}
+
+
 .cards {
   padding: 0;
   width: 100%;
@@ -84,7 +159,6 @@ button:hover{
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  margin: 4vw 0 4vw 0;
   background: rgba(55, 67, 112, 0.3);
 }
 
@@ -151,3 +225,8 @@ button:hover{
   transition: ease-in-out 1s ;
 }
 
+footer{
+  margin: 4vw;
+  color: lightblue;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
