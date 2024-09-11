@@ -12,27 +12,57 @@ const Cards =(props: { id: number}) => {
 
     const {id} = props;
     const [ cardData, setCardData ] = useState<CardData>();
+    const [isFlipped, setIsFlipped] = useState(false); // État pour savoir si la carte est retournée
 
     useEffect(() =>{
         getApi(`${CARDS_ENDPOINT}${id}`).then((data) => setCardData(data));
     }, [id]);
 
+// Fonction qui gère le flip
+const handleFlip = () => {
+    setIsFlipped(!isFlipped); // Change l'état isFlipped
+};
+
     return (
         <li>
-            <div className="alloverCard">
-                    <div className="card">
-                        <h3 className="cardName">{cardData?.name}</h3>
-                        <img className="cardPic"
-                            src={`${API_ENDPOINT}${cardData?.image}`} 
-                            alt={`${cardData?.name}`} 
-                            />
-                            {/* <span>{cardData?.description}</span> */}
-                    </div>
+            <div
+                className={`card ${isFlipped ? "flipped" : ""}`} // Applique la classe "flipped" si la carte est retournée
+                onClick={handleFlip} // Appel au clic pour retourner la carte
+            >
+                <div className="frontCard">
+                    <h3 className="cardName">{cardData?.name}</h3>
+                    <img
+                        className="cardPic"
+                        src={`${API_ENDPOINT}${cardData?.image}`}
+                        alt={`${cardData?.name}`}
+                />
+                </div>
+                <div className="backCard">
+                    <span><h4 className="description">{cardData?.description}</h4></span>
+                </div>
             </div>
-            {}
-
         </li>
     );
 };
+
+
+
+//     return (
+//         <li>
+//             <div id="front" className="frontCard">
+//                 <h3 className="cardName">{cardData?.name}</h3>
+//                 <img className="cardPic"
+//                     src={`${API_ENDPOINT}${cardData?.image}`} 
+//                     alt={`${cardData?.name}`} 
+//                     />
+//             </div>
+//             <div id="back" className="backCard">
+//                 <span>{cardData?.description}</span>
+//             </div>
+//             {}
+
+//         </li>
+//     );
+// };
 
 export default Cards;
