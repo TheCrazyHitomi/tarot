@@ -25,10 +25,8 @@ const handleFlip = () => {
 
     return (
         <li>
-            <div
-                className={`card ${isFlipped ? "flipped" : ""}`} // Applique la classe "flipped" si la carte est retournée
-                onClick={handleFlip} // Appel au clic pour retourner la carte
-            >
+            <div className="card-scene" onClick={handleFlip}>
+                <div className={`card ${isFlipped ? 'card--flipped' : 'card--unflip'}`}>
                 <div className="frontCard">
                     <h3 className="cardName">{cardData?.name}</h3>
                     <img
@@ -40,7 +38,9 @@ const handleFlip = () => {
                 <div className="backCard">
                     <span><h4 className="description">{cardData?.description}</h4></span>
                 </div>
+                </div>
             </div>
+
         </li>
     );
 };
