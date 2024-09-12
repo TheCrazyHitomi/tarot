@@ -4,6 +4,7 @@ import { getApi } from "../helpers/fetch-api";
 
 export interface CardData {
     name: string;
+    keywords: string[];
     description: string;
     image: string;
 }
@@ -36,7 +37,7 @@ const handleFlip = () => {
                 />
                 </div>
                 <div className="backCard">
-                    <span><h4 className="description">{cardData?.description}</h4></span>
+                    <span><h4 className="description">{cardData?.keywords}</h4></span>
                 </div>
                 </div>
             </div>

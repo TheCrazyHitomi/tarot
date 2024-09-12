@@ -171,6 +171,7 @@ button:hover{
   width: 2.5vw;
   height: 4.5vw;
   border-radius: 0.2vw;
+  background: rgba(55, 67, 112, 0.2);
   box-shadow: 0.1vw 0.1vw 0.1vw #191921,
               -0.1vw -0.1vw 0.1vw #57628d;
   color: lightblue;
@@ -182,7 +183,6 @@ button:hover{
   margin: 2vw;
   display: grid;
   grid-template-columns: repeat(3, 2.5vw); /* 3 colonnes */
-  grid-template-rows: repeat(0, 4.5vw);    /* 3 lignes */
   gap: 1vw; /* Espacement entre les cartes */
   width: 20%;
   height: fit-content;
