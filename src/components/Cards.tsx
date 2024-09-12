@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_ENDPOINT, CARDS_ENDPOINT } from "../config";
 import { getApi } from "../helpers/fetch-api";
+import KeywordsDisplay from "./KeywordsDisplay";
 
 export interface CardData {
     name: string;
@@ -37,7 +38,7 @@ const handleFlip = () => {
                 />
                 </div>
                 <div className="backCard">
-                    <span><h4 className="description">{cardData?.keywords}</h4></span>
+                    {cardData?.keywords && <KeywordsDisplay keywords={cardData?.keywords}/>}
                 </div>
                 </div>
             </div>
