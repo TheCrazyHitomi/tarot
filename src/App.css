@@ -143,10 +143,6 @@ button:hover{
               -0.1vw -0.1vw 0.1vw #57628d;
 }
 
-.row{
-  margin: 2vw;
-}
-
 .cross{
   width: 100%;
   display: flex;
@@ -227,6 +223,7 @@ button:hover{
 
 
 .cards {
+  position: relative;
   padding: 0;
   width: 100%;
   height: fit-content;
@@ -297,6 +294,8 @@ button:hover{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .frontCard{
@@ -307,7 +306,7 @@ button:hover{
   align-items: center;
   border-radius: 1.5vw;
   z-index: 3000; 
-  background: rgba(55, 67, 112, 0.2);
+  background:rgba(27, 33, 54, 0.3);
   box-shadow: 0.25vw 0.25vw 0.7vw #191921,
               -0.25vw -0.25vw 0.7vw #57628d;
   transform: rotateY(180deg); /* La face avant est visible par défaut */
@@ -315,13 +314,13 @@ button:hover{
 
 .backCard {
   border-radius: 1.5vw;
-  background: rgba(55, 67, 112, 0.2);
+  background: rgba(27, 33, 54, 0.3);
   box-shadow: 0.25vw 0.25vw 0.7vw #191921,
               -0.25vw -0.25vw 0.7vw #57628d;
   transform: rotateY(0deg); /* La face arrière est à 180° */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .description{
@@ -379,6 +378,47 @@ button:hover{
   color:lightblue;
   transition: ease-in-out 1s ;
   text-shadow: inherit;
+}
+
+.backdrop{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  width: 100vw;
+  height: 100%;
+  /* background-image: linear-gradient(
+    0deg,
+    rgba(255, 0, 255, 0.7),
+    rgba(102, 51, 153, 0.7),
+    rgba(30, 144, 255, 0.7),
+    rgba(0, 128, 0, 0)
+  ); */
+  z-index: 10000;
+}
+
+.modal{
+  width: 25vw;
+  height: 30vw;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2.5vw;
+  background: rgba(27, 33, 54, 0.6);
+  box-shadow: 0.25vw 0.25vw 0.7vw #191921,
+              -0.25vw -0.25vw 0.7vw #57628d;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+
+}
+
+body > footer {
+  position: fixed;
+  bottom: 0;
 }
 
 footer{

@@ -58,13 +58,13 @@ const ArcanasDrawing = () =>{
             {cardDraw?.length ? (
                 <>
                 <p>Cartes tirées</p>
-                <div className="row">
+                {/* <div className="row"> */}
                     <ul className="cards">
                         {cardDraw.map((card) => {
                             return <Cards id={card} />;
                         })}
                     </ul>
-                </div>
+                {/* </div> */}
                 </>
             ) : (
                 ""
