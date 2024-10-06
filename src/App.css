@@ -16,7 +16,7 @@
 }
 
 body{
-  background: repeat url("src/assets/images/Nebula1.jpg");
+  background: repeat url("./assets/images/Nebula1.jpg");
   background-size: cover;
 }
 
