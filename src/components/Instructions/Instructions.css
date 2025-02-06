@@ -1,0 +1,77 @@
+.sub-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sub-instruction h3,
+.sub-instruction p {
+  font-size: 0.75rem;
+}
+
+.cross-drawing-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.three-card-draw-layout {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.instruction-card {
+  width: 2rem;
+  height: 4rem;
+  background: rgba(55, 67, 112, 0.2);
+  box-shadow: 1px 1px 1px #191921, -1px -1px 1px #57628d;
+  padding-left: 0.2rem;
+}
+
+.card-1 {
+  grid-column: 1;
+  grid-row: 2; /* Première carte à gauche */
+}
+
+.card-2 {
+  grid-column: 3;
+  grid-row: 2; /* Deuxième carte à droite */
+}
+
+.card-3 {
+  grid-column: 2;
+  grid-row: 1; /* Troisième carte en haut */
+}
+
+.card-4 {
+  grid-column: 2;
+  grid-row: 3; /* Quatrième carte en bas */
+}
+
+.card-5 {
+  grid-column: 2;
+  grid-row: 2; /* Cinquième carte au centre (Synthèse) */
+}
+
+/* Specificitées pour l'affichage mobile */
+/* Pour le responsive, il faut d'abors commencé par le CSS pour la version mobile puis ensuite utiliser les media queries pour la version desktop (bureau) */
+
+@media (max-width: 768px) {
+  .sub-instruction {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+  }
+
+  .cross-drawing-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 2rem); /* 3 colonnes */
+    grid-template-rows: repeat(3, 4rem); /* 3 lignes */
+    gap: 1rem;
+    justify-content: center;
+  }
+}

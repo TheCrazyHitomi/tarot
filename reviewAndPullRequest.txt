@@ -1,0 +1,20 @@
+Explication de ce que j'ai fais sur la pull request :
+
+Pour faire court, j'ai amélioré la sémantique HTML, le nommage des classes/variables, le responsive du CSS et fait un peu de découpage de composants. Attention il ne faut pas merger comme ça parce que ce n'est pas fini ! ça demande pas mal de temps encore et j'aimerais que tu regardes ce que j'ai fais pour apprendre/poser des questions pour être en mesure de le finir toute seule :D (tu pourras me demander une review de code)
+
+Pour faire long...
+
+Le principal problème était l'unités de taille que tu as utilisé... le vw... partout xD sur la font-size, le padding, les marges etc... forcément impossible de faire du responsive.
+
+Ensuite j'ai remarqué que tu dupliques souvent, que ce soit dans tes composants React ou dans le CSS. En CSS il existe un système de variable. Tu déclares en haut ":root { TU DECLARES TES VARIABLES ICI }" puis tu les utilises avec var(--nom_de_variable). Si tu copie/colle régulièrement, c'est le signe que tu dois t'arrêter et créer une variable enfin d'arrêter de te répéter. Ton toi de quelques mois après te remerciera xD
+
+Attention à la sémantique HTML ^^ on ne met pas une balise HTML pour styliser son texte !!!!!!!!!!!!!!!!!!!!!! c'est le CSS qui stylise donc <br />, <em>, <strong> mis au hasard ne sert à rien, au contraire il se vaut mieux pas l'utiliser si t'es pas sûre (ou il faut voir sur le site MDN).
+
+Découpe tes fichiers CSS. Ce n'est pas une bonne pratique de tout mettre dans App.css. Tu peux lier un composant à un fichier CSS spécifique. C'est simple, tu créé un fichier CSS et tu te l'importe dans le composant et hop il est appliqué ^^ regarde dans le composant "Footer", c'est un exemple un peu tiré par les cheveux mais au moins il est simple et tu vas comprendre l'idée.
+
+Il y a un problème de cohérence de nommage de classes/variables aussi. Généralement en css on utilise le "kebab-case" (ex: tarot-layout) donc un tiret entre chaque mot. Si tu n'as pas envie de suivre ce nommage tu peux utiliser le "camelCase" (ex: tarotLayout) ou le "PascalCase" (ex: TarotLayout) mais si tu en choisi un il faut t'y tenir ^^ j'ai vu les 3 dans l'application et même un combo !! avec "littleCard-item". Fait attention parce que si le recruteur/ton collègue met le nez dans le code ça va pas faire pro 
+
+Le site sera plus responsive sans vw... mais ensuite ? pour faire du responsive il existe des media queries ! c'est pour appliquer du code quand l'écran rempli une certaine condition de largeur. Par exemple si l'écran dépasse 800px de largeur, hop le code dans la media query va s'executer ! Voila l'idée pour faire du style pour mobile / tablette et desktop. Tu as un exemple dans App.css avec les titres h1, h2, h3. Quand tu vas tout en bas, tu as une media query pour la version mobile (texte écrit plus petit). C'est bateau comme exemple mais au moins tu vas comprendre le mécanisme. Idéalement il faut tout refaire en CSS pour faire du "mobile first". La base de ton CSS est fait pour le mobile puis ensuite avec les media queries du gère les tablettes / desktop. Pense y pour tes nouveaux projets !!!!
+
+Bon je m'arrête là ça commence à faire un gros pavé xD si tu as des questions n'hésite pas !
+
