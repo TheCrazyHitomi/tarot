@@ -1,76 +1,77 @@
-import { useState, useEffect } from "react";
-import { determineDeckType } from "../helpers/determine-deck-type";
-import { drawCard } from "../helpers/draw-card";
-import { shuffleCards } from "../helpers/shuffle-cards";
-import Cards from "./Cards";
-import LittleCardDisplay from "./LittleCardDisplay";
+import { useEffect, useState } from 'react';
+import { determineDeckType } from '../helpers/determine-deck-type';
+import { drawCard } from '../helpers/draw-card';
+import { shuffleCards } from '../helpers/shuffle-cards';
+import Cards from './Cards';
+import LittleCardDisplay from './LittleCardDisplay';
 
+const ArcanasDrawing = () => {
+  const [cardDraw, setCardDraw] = useState<number[]>([]);
 
-const ArcanasDrawing = () =>{
+  const fullArcanas = determineDeckType(false);
 
-    const [cardDraw, setCardDraw] = useState<number[]>([]);
+  const [cards, setCards] = useState<number[]>(fullArcanas);
 
-    const fullArcanas = determineDeckType(false);
+  // possibilité de mélanger le jeu de cartes
+  const [canShuffle, setCanShuffle] = useState<boolean>(true);
 
-    const [cards, setCards] = useState<number[]>(fullArcanas);
+  // possibilité de tirer une carte
+  const [canDraw, setCanDraw] = useState<boolean>(true);
 
-    // possibilité de mélanger le jeu de cartes
-    const [canShuffle, setCanShuffle] = useState<boolean>(true);
+  const handleDraw = () => {
+    const newCardDrawing = drawCard(cards);
+    const newCardDraw: number[] = [...cardDraw];
+    newCardDraw.push(newCardDrawing.drawCard);
+    setCardDraw(newCardDraw);
+    setCards(newCardDrawing.newCards);
+    setCanShuffle(false);
+  };
 
-    // possibilité de tirer une carte
-    const [canDraw, setCanDraw] = useState<boolean>(true);
+  const handleShuffle = () => {
+    const newDeck = shuffleCards(cards);
+    setCards(newDeck);
+  };
 
-    const handleDraw = () => {
-        const newCardDrawing = drawCard(cards);
-        const newCardDraw: number[] = [...cardDraw];
-        newCardDraw.push(newCardDrawing.drawCard);
-        setCardDraw(newCardDraw);
-        setCards(newCardDrawing.newCards);
-        setCanShuffle(false);
-    };
+  useEffect(() => {
+    if (cardDraw.length >= 3) {
+      setCanDraw(false);
+    }
+  }, [cardDraw]);
 
-    const handleShuffle = () =>{
-        const newDeck = shuffleCards(cards);
-        setCards(newDeck);
-    };
+  return (
+    <>
+      <h2>Tirage à 3 cartes</h2>
 
-    useEffect(() => {
-        if (cardDraw.length >= 3) {
-            setCanDraw(false);
-        }
-    }, [cardDraw]);
+      <div className='littleCards'>
+        {cards.map((card) => (
+          <LittleCardDisplay id={card} />
+        ))}
+      </div>
 
-    return (
+      <div className='button-container'>
+        {canDraw && <button onClick={handleDraw}>tirer</button>}
+
+        <button onClick={handleShuffle} disabled={!canShuffle}>
+          mélanger
+        </button>
+      </div>
+
+      {cardDraw?.length ? (
         <>
-            <h2>Tirage à 3 cartes</h2>
-
-            <div className="littleCards">
-                {cards.map((card) => (
-                    <LittleCardDisplay id={card} />
-                ))}
-            </div>
-
-            {canDraw ? 
-                <button onClick={handleDraw}>tirer</button> : ""}
-            
-            <button onClick={handleShuffle} disabled={!canShuffle}>mélanger</button>
-        
-            {cardDraw?.length ? (
-                <>
-                <p>Cartes tirées</p>
-                {/* <div className="row"> */}
-                    <ul className="cards">
-                        {cardDraw.map((card) => {
-                            return <Cards id={card} />;
-                        })}
-                    </ul>
-                {/* </div> */}
-                </>
-            ) : (
-                ""
-            )}
+          <p>Cartes tirées</p>
+          {/* <div className="row"> */}
+          <ul className='cards'>
+            {cardDraw.map((card) => {
+              return <Cards id={card} />;
+            })}
+          </ul>
+          {/* </div> */}
         </>
-    );
+      ) : (
+        ''
+      )}
+    </>
+  );
 };
 
 export default ArcanasDrawing;

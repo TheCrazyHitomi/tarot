@@ -1,0 +1,9 @@
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: lightblue;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+}

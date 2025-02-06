@@ -1,0 +1,331 @@
+@import url('./Animations.css');
+
+:root {
+  --background-1: rgba(55, 67, 112, 0.2);
+  --text-color: lightblue;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--text-color);
+}
+
+#root {
+  background: repeat url('../assets/images/Nebula1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Major Mono Display', Courier, monospace;
+  font-size: 2.25rem;
+  line-height: calc(2.5 / 2.25);
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: calc(1.75 / 1.25);
+}
+
+h3 {
+  font-size: 1rem;
+  line-height: calc(1.75 / 1.25);
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+  line-height: calc(1.5 / 1);
+}
+
+li {
+  padding: 0.5vw;
+  text-shadow: 0.1vw 0.1vw 0.1vw #191921;
+}
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+ol {
+  padding: 1rem;
+  border-bottom: 1px transparent;
+}
+
+a:hover {
+  color: rgb(3, 3, 61);
+  border-bottom: 1px solid;
+}
+
+button {
+  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+  background: var(--background-1);
+  border-radius: 0.5vw;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-style: outset;
+  border-color: rgba(87, 98, 141, 0.5);
+  color: var(--text-color);
+}
+
+button:hover {
+  background: rgba(110, 128, 193, 0.2);
+  border-radius: 0.5vw;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-style: inset;
+}
+
+.button-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  background: var(--background-1);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.littleCards-maj {
+  margin: 2vw 0 2vw 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(11, 2vw);
+  grid-template-rows: repeat(2, 3vw);
+  justify-content: center;
+}
+.littleCards {
+  margin: 2vw 0 2vw 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(26, 2vw);
+  grid-template-rows: repeat(2, 3vw);
+  justify-content: center;
+}
+
+.littleCard-item {
+  width: 1.5vw;
+  height: 2.5vw;
+  border-radius: 0.2vw;
+  box-shadow: 0.1vw 0.1vw 0.1vw #191921, -0.1vw -0.1vw 0.1vw #57628d;
+}
+
+.cross {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vw;
+}
+
+.tarot-layout {
+  margin: 2vw;
+  display: grid;
+  grid-template-columns: repeat(3, 15vw); /* 3 colonnes */
+  grid-template-rows: repeat(3, 25vw); /* 3 lignes */
+  gap: 1vw; /* Espacement entre les cartes */
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+}
+
+.cards {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+
+/* Styles de base pour la carte */
+.card-scene {
+  width: 15vw;
+  height: 25vw;
+  perspective: 1000px; /* Pour créer un effet 3D */
+  backface-visibility: hidden; /* Cache l'autre face quand on regarde une face */
+  cursor: pointer;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg); /* Face avant visible au départ */
+  transition: transform 0.6s ease-in-out;
+}
+
+.card--flipped {
+  animation: cardFlip 0.275s forwards linear;
+}
+
+.card--unflip {
+  animation: cardUnFlip 0.275s forwards linear;
+}
+
+.frontCard,
+.backCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.frontCard {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1.5vw;
+  z-index: 3000;
+  background: rgba(27, 33, 54, 0.3);
+  box-shadow: 0.25vw 0.25vw 0.7vw #191921, -0.25vw -0.25vw 0.7vw #57628d;
+  transform: rotateY(180deg); /* La face avant est visible par défaut */
+}
+
+.backCard {
+  border-radius: 1.5vw;
+  background: rgba(27, 33, 54, 0.3);
+  box-shadow: 0.25vw 0.25vw 0.7vw #191921, -0.25vw -0.25vw 0.7vw #57628d;
+  transform: rotateY(0deg); /* La face arrière est à 180° */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.description {
+  padding: 0;
+  width: 13vw;
+  list-style: none;
+  font-size: 1.5vw;
+}
+
+.frontCard:hover .cardPic {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 11vw;
+  height: 11vw;
+  border-radius: 50%;
+  transition: ease-in 0.5s;
+  transform: translateY(-3vw);
+  box-shadow: 0.25vw 0.25vw 0.7vw rgb(87, 98, 141),
+    -0.25vw -0.25vw 0.7vw #191921;
+  object-fit: cover;
+}
+
+.frontCard:hover {
+  box-shadow: 0.25vw 0.25vw 0.7vw rgb(87, 98, 141),
+    -0.25vw -0.25vw 0.7vw #191921;
+  transition: ease-in 0.5s;
+}
+
+.cardPic {
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 15vw;
+  height: 25vw;
+  border-radius: 1.5vw;
+}
+
+.cardName {
+  position: absolute;
+  bottom: 3vw;
+  z-index: 200;
+  color: transparent;
+  text-shadow: none;
+}
+
+.card:hover .cardName {
+  color: var(--text-color);
+  transition: ease-in-out 1s;
+  text-shadow: inherit;
+}
+
+.backdrop {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  width: 100vw;
+  height: 100%;
+  z-index: 10000;
+}
+
+.modal {
+  width: 25vw;
+  height: 30vw;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2.5vw;
+  background: rgba(27, 33, 54, 0.6);
+  box-shadow: 0.25vw 0.25vw 0.7vw #191921, -0.25vw -0.25vw 0.7vw #57628d;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Specificitées pour l'affichage mobile */
+/* Pour le responsive, il faut d'abors commencé par le CSS pour la version mobile puis ensuite utiliser les media queries pour la version desktop (bureau) */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 0.75rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+}
